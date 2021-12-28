@@ -25,14 +25,14 @@ to find the twl.py, which is the vocabulary file in Python.
     - The retun will send the top 3 option back to Amazon Connect for the costumer the hear straight away. 
 
   b, The vanity.py code
-    - Generates a vanity number from a phone number received from Amazon Connect through the Lambda function
+    - Generates a vanity number from the last 7 digits of a phone number received from Amazon Connect through the Lambda function
 
     - It can be observed that each digit represents 3 or 4 different letters in the alphabet apart from 0 and 1 
     which doesn't represent any.
     - Map each of the numbers recursive with their string of probable letters, i.e 2 with “abc”, 3 with “def” etc. 
     numbersMap[i] stores all characters that correspond to digit i in phone
     - The helper method _get_substrings(self, word) will return all substing words that can be found in the transformed number.
-    - The helper method _get_words(self, phone) will return all possible words that can be obtained by the last 7 digit of the input number 
+    - The helper method _get_words(self, phone) will return all possible words that can be obtained by the last 7 digits of the input number 
     in the order of the length of the valid substings it contains. 
     - The helper method _get_all(self, phone) will return all possible alphanumeric variations that can be obtained by the input number. 
     - The helper method _get_numbers(self, number, output, txt, idx, l) will return all possible words that can be obtained by the input number. 
