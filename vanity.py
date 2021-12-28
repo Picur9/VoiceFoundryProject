@@ -12,8 +12,8 @@ Different rules could be set up for defining what weighs more. ATM the more and 
 In addition with some letters (eg. A, B, I, R U, Y) and some numbers (eg. 1, 2, 4) that can mean a word on their own adding some extra weight.
 Ordinals (a number followed by 'st', 'nd', 'rd' or 'th') are also considered to be valid and weight more than just regular numbers.
 
-The helper method _get_words(phone) will return all possible words that can be obtained by input number in an order of the length
-of the valid substings it contains. 
+The helper method _get_words(self, phone) will return all possible words that can be obtained by the last 7 digit of the input number 
+in the order of the length of the valid substings it contains. 
 
 The helper method _get_all(phone) will return all possible alphanumeric variations that can be obtained by input number. 
 
