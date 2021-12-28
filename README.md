@@ -1,15 +1,16 @@
 # VoiceFoundryProject
 This repo contain my project, which I have done for VoiceFoundry 3rd round interview.
 
+Please call +441135380153 to test the Amazon Connect enviroment.
 
 Exercise:
 1  Create a Lambda that converts phone numbers to vanity numbers and save the best 5 resulting vanity numbers and the caller's number in a DynamoDB table. "Best" is defined as you see fit - explain your thoughts.
 2  Create an Amazon Connect contact flow that looks at the caller's phone number and says the 3 vanity possibilities that come back from the Lambda function.
 3  Writing and Documentation
 
-Solution:
+Solution: 
 0. Chose the region where all serviced available, specially Amazon Connect not available all regions at the moment. 
-1. Create a DynamoDb table with a Name : "number-to-letters", and a Particion key of "CallerId(String)".
+1. Create a DynamoDb table with a Name : "number-to-letters", and a Particion key of "CallerId"(String).
 2. Create and I`m role to let Lambda Access DynamoDB, SNS, and Amazon connect.
 3. Create a lambda function  called writedata/ which has 3 python file attached ("lambda_function.py", "twl.py", "vanity.py"). The reason python been used is I was only able
 to find the twl.py, which is the vocabulary file in Python.
@@ -72,8 +73,54 @@ to find the twl.py, which is the vocabulary file in Python.
               1, The phone number first.
               2, Set hours of Operations
               3, Create a queue
-              4, Create your conract flow for this excersise my flow called "myfirstconnectchart" located on the Git "myfirstconnectchart (1)"
-              5, Create a routing prifiles
-              6, Set up the created flow for the phone number destination flow. 
-              
-                                                                   
+              4, Create your connect flow for this excersise my flow called "myfirstconnectchart" located on the Git "myfirstconnectchart"
+              5, Publish your connect flow
+              6, Create a routing profiles
+              7, Set up the created flow for the phone number destination flow. 
+Extras:
+There is an advanced Option for generate the Vanity numbers under using the "vanity_advance.py". But find it too long to generate a 7 digit option
+and the Lambda 8 second limit within the Amazon Connect has Timedout. 
+ - Generates a vanity number from the last 7 digits of a phone number.
+
+ - It can be observed that each digit represents 3 or 4 different letters in the alphabet apart from 0 and 1 which doesn't represent any.
+ - Map each of the numbers recursive with their string of probable letters, i.e 2 with “abc”, 3 with “def” etc. 
+ numbersMap[i] stores all characters that correspond to digit i in phone
+ - The helper method _split_word(word) will return all substings and each weight that can be found in the transformed number.
+ - Different rules could be set up for defining what weighs more. ATM the more and longer the words are would come out on top.
+ - In addition with some letters (eg. A, B, I, R U, Y) and some numbers (eg. 1, 2, 4) that can mean a word on their own adding some extra weight.
+ - Ordinals (a number followed by 'st', 'nd', 'rd' or 'th') are also considered to be valid and weight more than just regular numbers.
+ - The helper method _get_words(self, phone) will return all possible words that can be obtained by the last 7 digit of the input number 
+ in the order of the length of the valid substings it contains. 
+ - The helper method _get_all(phone) will return all possible alphanumeric variations that can be obtained by input number. 
+ - The helper method _get_numbers(number, output, txt, idx, l) will return all possible words that can be obtained by input number. 
+ - The output words are one by one stored in output[]. The txt is appended with the current digit on the current posisiton,
+ adding all 3 or 4 possible characters for current digit  and recur for remaining digits.
+
+Have created a static website which call all saved number from the DynamoDb and display all 5 possible options for all phone number called. 
+http://project.petrucsik.co.uk/ this site hosted in a S3 bucket and using Lambda functions and API Gateway to display the information. 
+
+"Record your reasons for implementing the solution the way you did, struggles you faced and problems you overcame."
+My main focus was to create a fully working serverless enviroment, which will use a vocabulary to find as many word from the phone number last 7 digit as possible. I have 
+choosed the last 7 digit to shortcut the code running time as well in most of the country the first 4 number is the Country and the area number code. In the UK from mobile phone 
+we will leave the +4475 as a fix number. This will still givu us enough option to create a words.  I have chosen the longest word for the best sollution in my code. 
+There was a great journey to lunch my first Amazon Connect Centre and see how can I learn from this exciting service. 
+There was a challange to fidn the right code as well as to write everything in Python, as most of my cove before was in JS. 
+I was able to get a lot of code from the web which helped me to get teh project done, and I see I will have to push myself on that front to become better.
+
+"What shortcuts did you take that would be a bad practice in production?"
+Some of my services has full access from other services without limitation. Also using one Lambda function to write, convert and give back which will give me the option to use a 
+step function and use the more advanced code. 
+
+ What would you have done with more time? We know you have a life. :-)
+ As mentioned above if I do not run out of time probably break down the lambda code to use the advanced code option. 
+ Also would itroduce a first check on the Amazon Connect and give the option for the costumers to choose another number before processing through the lambda function. 
+ Would like to introduce Amazon Lex to enable the speaking options on Amazon Connect as well as the keyboard. 
+ Send the options out via text or email to the caller. 
+ 
+ main.py and test.py for local run test purpose only, using both version of the vanity code. 
+ 
+Thank you for giving me the opportunity to learn about Amazon Connect and create something with a service I never used and learned from before. I`m looking forward to getting 
+any feedback regarding any part of my work. 
+
+                                                                                                      Warm Regards,
+                                                                                                    Geza Gabor Petrucsik
