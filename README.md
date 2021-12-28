@@ -62,12 +62,13 @@ to find the twl.py, which is the vocabulary file in Python.
     If at any point during the search the appropriate child is not found, the search fails - the string is not a word.
     - See also: http://code.activestate.com/recipes/577835-self-contained-twl06-dictionary-module-500-kb/
       
-4. Test your code with either running the semple JSON on Lambda, ot with running the main.py and the test.py on your local computer.  
+4. Test your code with either running the sample JSON file as the event(located on the git "sample.json") on Lambda, ot with running the main.py and the test.py on your local computer.  
 5. Create an SNS topic for failed lambda function to send an email.
 6. Set up Cloudwatch to set an alarm to tigger the SNS function if there is a Lambda Error. 
 7. Set up the Amazon Connect. First setting up the instance. My instance is https://petrucsik.my.connect.aws, test user log in details "test_user", password: "T3stUs3r". This account has a view only accesess. 
 8. Concact your Lambda function with Amazon Connect on the instance set up under "Contact flow" => "AWS Lambda". 
-9. Log in to the Amazon Connect Instance and set up the following: 
+9. Log in to the Amazon Connect Instance and set up the following:
+ 
               1, The phone number first.
               2, Set hours of Operations
               3, Create a queue
