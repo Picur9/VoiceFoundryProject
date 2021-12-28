@@ -126,5 +126,5 @@ main.py and test.py for local run test purpose only, using both version of the v
 Thank you for giving me the opportunity to learn about Amazon Connect and create something with a service I never used and learned from before. I`m looking forward to getting 
 any feedback regarding any part of my work. 
 
-                                                                                                      Warm Regards,
-                                                                                                    Geza Gabor Petrucsik
+                                                                                              Warm Regards,
+                                                                                          Geza Gabor Petrucsik
