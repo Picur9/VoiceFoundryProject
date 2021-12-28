@@ -1,6 +1,6 @@
 '''
 Functionality:
-    - Generates a vanity number from a phone number
+    - Generates a vanity number from the last 7 digits of a phone number
 It can be observed that each digit represents 3 or 4 different letters in the alphabet apart from 0 and 1 which doesn't represent any.
 Map each of the numbers recursive with their string of probable letters, i.e 2 with “abc”, 3 with “def” etc. 
 numbersMap[i] stores all characters that correspond to digit i in phone
