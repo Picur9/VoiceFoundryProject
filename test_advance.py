@@ -1,6 +1,6 @@
 import unittest
 import twl
-import vanity-advance
+import vanity_advance
 
 class TestVanityPhone(unittest.TestCase):
     def test_twl(self):
