@@ -13,6 +13,7 @@ class TestVanityPhone(unittest.TestCase):
         self.assertEqual(vanity.generate("46244"), ['4magi', 'go2hi', 'hm2hi', 'ho2hi', 'in2hi'])
         self.assertEqual(vanity.generate("+6086657"), ['60tools', '608mols', '60took7', '60tool7', '608mol7'])
         self.assertEqual(vanity.generate("+13569377"), ['1flowers', '13lowers', '1el6yeps', '1el6zeps', '1elm9err'])
+        self.assertEqual(vanity.generate("+120605"), [])
 
      def test_vanity_advance(self):
         self.assertEqual(vanity_advance.generate("+46244"), ['4-magi', 'inch-4', 'I-magi', 'inch-I', 'go-ahi'])
