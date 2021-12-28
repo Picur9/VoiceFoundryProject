@@ -1,7 +1,7 @@
 # VoiceFoundryProject
 This repo contain my project, which I have done for VoiceFoundry 3rd round interview.
 
-Please call +441135380153 to test my Amazon Connect Call Centre.
+Please call +44 113 538 0153 to test my Amazon Connect Call Centre.
 
 Exercise:
 1  Create a Lambda that converts phone numbers to vanity numbers and save the best 5 resulting vanity numbers and the caller's number in a DynamoDB table. "Best" is defined as you see fit - explain your thoughts.
